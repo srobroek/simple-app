@@ -1,6 +1,7 @@
 ![logo](logos/CarvelLogo.png)
 
-Kevin: edit this to add in the step 3 and the addition of the change in the value.yml in step 3
+## Kevin: edit this to add in the step 3 and the addition of the change in the value.yml in step 3
+## Kevin: Also remove step-4
 
 # k8s-simple-app-example
 
