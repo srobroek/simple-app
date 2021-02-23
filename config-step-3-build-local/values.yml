@@ -3,3 +3,4 @@
 svc_port: 80
 app_port: 80
 hello_msg: stranger
+username: <put_your_USERNAME_here>

@@ -1,3 +1,5 @@
+#@ load("@ytt:data", "data")
+
 ---
 apiVersion: kbld.k14s.io/v1alpha1
 kind: Config
@@ -6,7 +8,7 @@ sources:
   path: .
 destinations:
 - image: simple-app-step-3
-  newImage: registry.lab.livefire.dev/default/simple-app-step-3
+  newImage: #@ "registry.lab.livefire.dev/" + data.values.username + "/simple-app-step-3"
   tags:
   - step-3
   - latest
