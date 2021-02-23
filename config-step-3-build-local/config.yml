@@ -9,7 +9,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: default
-  name: simple-app
+  name: simple-app-step-3
 spec:
   ports:
   - port: #@ data.values.svc_port
@@ -20,7 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: default
-  name: simple-app
+  name: simple-app-step-3
 spec:
   selector:
     matchLabels: #@ labels()
@@ -29,8 +29,8 @@ spec:
       labels: #@ labels()
     spec:
       containers:
-      - name: simple-app
-        image: docker.io/dkalinin/k8s-simple-app
+      - name: simple-app-step-3
+        image: simple-app-step-3
         env:
         - name: HELLO_MSG
           value: #@ data.values.hello_msg

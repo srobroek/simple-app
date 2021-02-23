@@ -1,6 +1,12 @@
 ---
 apiVersion: kbld.k14s.io/v1alpha1
-kind: Sources
+kind: Config
 sources:
-- image: docker.io/dkalinin/k8s-simple-app
+- image: simple-app-step-3
   path: .
+destinations:
+- image: simple-app-step-3
+  newImage: registry.lab.livefire.dev/default/simple-app-step-3
+  tags:
+  - step-3
+  - latest
