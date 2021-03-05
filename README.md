@@ -1,7 +1,7 @@
 ![logo](logos/CarvelLogo.png)
 
-## Kevin: edit this to add in the step 3 and the addition of the change in the value.yml in step 3
-## Kevin: Also move step-4 to step-0 and reference again before cleanup
+## modify this to add in the additional tasks in step 3, and the addition of the change in the value.yml in step 3
+
 
 # simple-app-example
 
