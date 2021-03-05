@@ -1,21 +1,51 @@
 ![logo](logos/CarvelLogo.png)
 
 ## Kevin: edit this to add in the step 3 and the addition of the change in the value.yml in step 3
-## Kevin: Also remove step-4
+## Kevin: Also move step-4 to step-0 and reference again before cleanup
 
-# k8s-simple-app-example
+# simple-app-example
 
-Example repo shows how to use tools from carvel dev: [ytt](https://carvel.dev/ytt), [kbld](https://carvel.dev/kbld), [kapp](https://carvel.dev/kapp) and [kwt](https://github.com/vmware-tanzu/carvel-kwt) to work with a simple Go app on Kubernetes.
+Example repo shows how to use tools from carvel dev: [ytt](https://carvel.dev/ytt), [kbld](https://carvel.dev/kbld), [kapp](https://carvel.dev/kapp), [kwt](https://github.com/vmware-tanzu/carvel-kwt), and [imgpkg] (https://carvel.dev/imgpkg) to work with a simple Go app on Kubernetes.
 
 Associated blog post: [Deploying Kubernetes Applications with ytt, kbld, and kapp](https://carvel.dev/blog/deploying-apps-with-ytt-kbld-kapp/).
 
-## Install Carvel Tools
+## Are the Carvel Tools installed
 
-Head over to [carvel.dev](https://carvel.dev/) for installation instructions.
+Test to see if the tools are installe by running the following code snippets:
 
-## Deploying Application
+```
+kapp version
+kbld version
+ytt version
+imgpkg version
+kwt version
+```
+
+If these tools are not installed, either contact someone with administrative privileges on your kubernetes cluster, or
+head over to [carvel.dev](https://carvel.dev/) for installation instructions.
+
+## Deploying the Application
 
 Each top level step has an associated `config-step-*` directory. Refer to [Directory Layout](#directory-layout) for details about files.
+
+### Step 0: Pushing an image to your repository
+
+Uses 
+. [kbld](https://carvel.dev/kbld
+. [ytt](https://carvel.dev/ytt)
+. [kapp](https://carvel.dev/kapp)
+. [imgpkg] (https://carvel.dev/imgpkg
+
+Why are we doing this? Docker has instituted rate limiting. We wish to avoid that situation, so we are going to pull the original image from dkalinin
+and store it in our docker compliant OCI registry, Harbor.
+
+Warning: If you have forked this repository, you will need to edit the configuration files listed below to point to your own registry. You CANNOT simply run the following code as it was designed to be consumed by our lab participants.
+
+```bash
+docker login
+docker login registry.leb.livefire.dev
+kapp deploy -a simple-app -c -f <(ytt -f config-step-0-build-and-push/ -v push_images_repo=registry.lab.livefire.dev/<your_project_name>/simple-app | kbld -f- )
+```
 
 ### Step 1: Deploying application
 
@@ -108,16 +138,8 @@ kapp deploy -a simple-app -c -f <(ytt -f config-step-3-build-local/ | kbld -f-)
 
 Observe that new container was built, and deployed. This change should be returned from the app in the browser.
 
-### Step 4: Building and pushing container images to registry
 
-Introduces [kbld](https://carvel.dev/kbld) functionality to push to remote registries. This step can work with Minikube or any remote cluster.
-
-```bash
-docker login -u dkalinin -p ...
-kapp deploy -a simple-app -c -f <(ytt -f config-step-4-build-and-push/ -v push_images_repo=gcr.io/projectX/k8s-simple-app | kbld -f-)
-```
-
-### Step 5: Clean up cluster resources
+### Step 4: Clean up cluster resources
 
 ```bash
 kapp delete -a simple-app
