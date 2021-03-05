@@ -1,6 +1,7 @@
 ![logo](logos/CarvelLogo.png)
 
 ## modify this to add in the additional tasks in step 3, and the addition of the change in the value.yml in step 3
+## add in the step 0 tasks (modified from step 4 and moved earlier in the lab)
 
 
 # simple-app-example
