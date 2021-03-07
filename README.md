@@ -11,7 +11,7 @@ Associated blog post: [Deploying Kubernetes Applications with ytt, kbld, and kap
 
 ## Are the Carvel Tools installed
 
-Test to see if the tools are installe by running the following code snippets:
+Test to see if the tools are installed by running the following code snippets:
 
 ```
 kapp version
@@ -41,7 +41,9 @@ and store it in our docker compliant OCI registry, Harbor.
 
 The simplest way to do this is to use the ```imgpkg``` command. We will illustrate two ways to accomplish this task: a long way, and a short way. At the bottom of this section there is a third way to accompish this task, however, we are not going to illustrate it. That is left up to the consumer of this repository.
 
-Here's the long way:
+#### The Long Way
+
+Here's the long way.
 
 First, it is convenient if you set your Registry in an environment variable. We are showing an example of HARBOR!
 
@@ -79,13 +81,16 @@ Log into your registry in the GUI and find your repository, and then find the do
 docker pull ${HARBOR_DOMAIN}/<your-repository>/simple-app@sha256:<replace-with-the-sha-value>
 ```
 
+#### The Short Way
+
 Here's the second way of doing this. However, to achieve this you need to install the [Carvel](https://carvel.dev/) toolset.
 
 ```
 imgpkg copy -i dkalinin/k8s-simple-app:latest --to-repo ${HARBOR_DOMAIN}/<your-repository>/simple-app
 ```
+#### Third Option
 
-Here's the third way to do this:
+Here's the third way to do this.
 
 Warning: If you have forked this repository, you will need to edit the configuration files listed below to point to your own registry. You CANNOT simply run the following code as it was designed to be consumed by our lab participants. You will also have to edit the configuration files in the config-step-0-start directory to match your repository. DO NOT JUST RUN THIS COMMAND!
 
