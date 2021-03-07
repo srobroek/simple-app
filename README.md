@@ -83,16 +83,17 @@ docker pull ${HARBOR_DOMAIN}/<your-repository>/simple-app@sha256:<replace-with-t
 
 #### The Short Way
 
-Here's the second way of doing this. However, to achieve this you need to install the [Carvel](https://carvel.dev/) toolset.
+Here's the second way of doing this. You need to have an up-to-date version of ```imgpkg```.
 
 ```
 imgpkg copy -i dkalinin/k8s-simple-app:latest --to-repo ${HARBOR_DOMAIN}/<your-repository>/simple-app
 ```
+
 #### Third Option
 
 Here's the third way to do this.
 
-Warning: If you have forked this repository, you will need to edit the configuration files listed below to point to your own registry. You CANNOT simply run the following code as it was designed to be consumed by our lab participants. You will also have to edit the configuration files in the config-step-0-start directory to match your repository. DO NOT JUST RUN THIS COMMAND!
+Warning: If you have forked this repository, you will need to edit the configuration files listed below to point to your own registry. You CANNOT simply run the following code as it was designed to be consumed by our lab participants. You will also have to edit the configuration files in the config-step-0-start directory to match your repository. DO NOT JUST RUN THESE COMMANDS!
 
 ```bash
 docker login
