@@ -31,15 +31,15 @@ Each top level step has an associated `config-step-*` directory. Refer to [Direc
 ### Step 0: Pushing an image to your repository
 
 Uses 
-. [kbld](https://carvel.dev/kbld
+. [kbld](https://carvel.dev/kbld)
 . [ytt](https://carvel.dev/ytt)
 . [kapp](https://carvel.dev/kapp)
-. [imgpkg] (https://carvel.dev/imgpkg
+. [imgpkg](https://carvel.dev/imgpkg)
 
 Why are we doing this? Docker has instituted rate limiting. We wish to avoid that situation, so we are going to pull the original image from dkalinin
 and store it in our docker compliant OCI registry, Harbor.
 
-The simplest way to do this is to use the ```imgpkg``` command. We will illustrate two ways to accomplish this task: a long way, and a short way. At the bottom of this section there is a third way to accompish this task, however, we are not going to illustrate it. That is left up to the consumer of this repository.
+We will illustrate two ways to accomplish this task: a long way, and a short way. At the bottom of this section there is a third way to accompish this task, however, we are not going to illustrate it. That is left up to the consumer of this repository. In our opinion, the simplest way to do this is to use the ```imgpkg``` command. 
 
 #### The Long Way
 
