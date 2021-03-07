@@ -5,7 +5,7 @@
 
 # simple-app-example
 
-Example repo shows how to use tools from carvel dev: [ytt](https://carvel.dev/ytt), [kbld](https://carvel.dev/kbld), [kapp](https://carvel.dev/kapp), [kwt](https://github.com/vmware-tanzu/carvel-kwt), and [imgpkg] (https://carvel.dev/imgpkg) to work with a simple Go app on Kubernetes.
+Example repo shows how to use tools from carvel dev: [ytt](https://carvel.dev/ytt), [kbld](https://carvel.dev/kbld), [kapp](https://carvel.dev/kapp), [imgpkg](https://carvel.dev/imgpkg), and [kwt](https://github.com/vmware-tanzu/carvel-kwt) to work with a simple Go app on Kubernetes.
 
 Associated blog post: [Deploying Kubernetes Applications with ytt, kbld, and kapp](https://carvel.dev/blog/deploying-apps-with-ytt-kbld-kapp/).
 
