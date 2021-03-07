@@ -79,7 +79,7 @@ Log into your registry in the GUI and find your repository, and then find the do
 docker pull ${HARBOR_DOMAIN}/<your-repository>/simple-app@sha256:<replace-with-the-sha-value>
 ```
 
-Here's the second way of doing this. However, to achieve this you need to install the [Carvel] (carvel.dev) toolset.
+Here's the second way of doing this. However, to achieve this you need to install the [Carvel](https://carvel.dev/) toolset.
 
 ```
 imgpkg copy -i dkalinin/k8s-simple-app:latest --to-repo ${HARBOR_DOMAIN}/<your-repository>/simple-app
