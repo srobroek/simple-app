@@ -1,7 +1,6 @@
 ![logo](logos/CarvelLogo.png)
 
 ## modify this to add in the additional tasks in step 3, and the addition of the change in the value.yml in step 3
-## add in the step 0 tasks (modified from step 4 and moved earlier in the lab)
 
 
 # simple-app-example
@@ -40,12 +39,60 @@ Uses
 Why are we doing this? Docker has instituted rate limiting. We wish to avoid that situation, so we are going to pull the original image from dkalinin
 and store it in our docker compliant OCI registry, Harbor.
 
-Warning: If you have forked this repository, you will need to edit the configuration files listed below to point to your own registry. You CANNOT simply run the following code as it was designed to be consumed by our lab participants.
+The simplest way to do this is to use the ```imgpkg``` command. We will illustrate two ways to accomplish this task: a long way, and a short way. At the bottom of this section there is a third way to accompish this task, however, we are not going to illustrate it. That is left up to the consumer of this repository.
+
+Here's the long way:
+
+First, it is convenient if you set your Registry in an environment variable. We are showing an example of HARBOR!
+
+```
+export HARBOR_DOMAIN=<your-registry>
+```
+
+Log into your OCI compliant registry
+
+```docker login ${HARBOR_DOMAIN} -u <your-login-username>```
+
+You will be asked to enter your password.
+
+Now, pull the original Docker image (you can see this in the original repo we forked in the top left of the GitHub screen).
+
+```
+docker pull docker.io/dkalinin/k8s-simple-app
+```
+
+Now, retag the original image to something you want in your registry
+
+```
+docker image tag dkalinin/k8s-simple-app:latest ${HARBOR_DOMAIN}/<your-repository>/simple-app:<your-tag>
+```
+
+Now, push that new image into your registry and repository.
+
+```
+docker push ${HARBOR_DOMAIN}/<your-registry>/simple-app:<your-tag>
+```
+
+Log into your registry in the GUI and find your repository, and then find the docker pull command to use. We typically verify that an new image exists by pulling it from our regsitry. This is a simple way to verify that you actually pushed the image you want and can consume it later (pull).
+
+```
+docker pull ${HARBOR_DOMAIN}/<your-repository>/simple-app@sha256:<replace-with-the-sha-value>
+```
+
+Here's the second way of doing this. However, to achieve this you need to install the [Carvel] (carvel.dev) toolset.
+
+```
+imgpkg copy -i dkalinin/k8s-simple-app:latest --to-repo ${HARBOR_DOMAIN}/<your-repository>/simple-app
+```
+
+Here's the third way to do this:
+
+Warning: If you have forked this repository, you will need to edit the configuration files listed below to point to your own registry. You CANNOT simply run the following code as it was designed to be consumed by our lab participants. You will also have to edit the configuration files in the config-step-0-start directory to match your repository. DO NOT JUST RUN THIS COMMAND!
 
 ```bash
 docker login
-docker login registry.leb.livefire.dev
-kapp deploy -a simple-app -c -f <(ytt -f config-step-0-build-and-push/ -v push_images_repo=registry.lab.livefire.dev/<your_project_name>/simple-app | kbld -f- )
+docker login <your OCI compliant registry>
+kapp deploy -a simple-app -c -f <(ytt -f config-step-0-start/ -v push_images_repo=<your_repository>/<your_project_name>/simple-app | kbld -f- )
 ```
 
 ### Step 1: Deploying application
