@@ -8,7 +8,6 @@ sources:
   path: .
 destinations:
 - image: simple-app-step-3
-  newImage: #@ "registry.lab.livefire.dev/" + data.values.username + "/simple-app-step-3"
+  newImage: #@ "<put_your_Harbor_registry_URL_here>/" + data.values.username + "/simple-app-step-3"
   tags:
   - step-3
-  - latest
