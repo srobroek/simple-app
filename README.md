@@ -1,7 +1,5 @@
 ![logo](logos/CarvelLogo.png)
 
-## modify this to add in the additional tasks in step 3, and the addition of the change in the value.yml in step 3
-
 
 # simple-app-example
 
