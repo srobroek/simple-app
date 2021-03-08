@@ -173,10 +173,9 @@ kapp deploy -a simple-app -c -f <(ytt -f config-step-2-template/ -f config-step-
 
 ### Step 3: Building container images locally
 
-Introduces [kbld](https://carvel.dev/kbld) functionality for building images from source code. This step requires Minikube. If Minikube is not available, skip to the next step.
+Introduces [kbld](https://carvel.dev/kbld) functionality for building images from source code. This code relies on you having access to a Kubernetes cluster, a OCI compliant registry (like Harbor), AND you editing the config files in the `config-step-3-build-local` directory. DO NOT RUN THESE COMMANDS WITHOUT EDITING THE CONFIG files!
 
 ```bash
-eval $(minikube docker-env)
 kapp deploy -a simple-app -c -f <(ytt -f config-step-3-build-local/ | kbld -f-)
 ```
 
@@ -184,7 +183,7 @@ Note that rerunning above command again should be a noop, given that nothing has
 
 ### Step 3a: Modifying application source code
 
-Uncomment `fmt.Fprintf(w, "<p>local change</p>")` line in `app.go`, and re-run above command:
+In the `config-step-3-build-local` directory, uncomment `fmt.Fprintf(w, "<p>local change</p>")` line in `app.go`, and re-run above command:
 
 ```bash
 kapp deploy -a simple-app -c -f <(ytt -f config-step-3-build-local/ | kbld -f-)
@@ -199,7 +198,7 @@ Observe that new container was built, and deployed. This change should be return
 kapp delete -a simple-app
 ```
 
-There is currently no functionality in kbld to remove pushed images from registry.
+There is currently no functionality in kbld to remove pushed images from registry. There are instructions at the end of the large lab that will delete these images, and your instructor will run a clean-up script after class is finished.
 
 ## Directory Layout
 
