@@ -8,7 +8,7 @@ simple-app: ""
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: #@ data.values.username
+  namespace: #@ data.values.USER_ID
   name: simple-app-step-3
 spec:
   ports:
@@ -19,7 +19,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: #@ data.values.username
+  namespace: #@ data.values.USER_ID
   name: simple-app-step-3
 spec:
   selector:
