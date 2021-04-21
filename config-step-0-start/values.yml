@@ -8,4 +8,4 @@ hello_msg: stranger
 #! If not specified, image will not be pushed to a registry
 #! (e.g. "docker.io/dkalinin/k8s-simple-app")
 push_images_repo: "<put_your_Harbor_registry_here>/<put_your_username_here>/simple-app"
-# push_images_repo: "harbor.dev.livefire.lab/kevincr/simple-app@sha256:4c8b96d4fffdfae29258d94a22ae4ad1fe36139d47288b8960d9958d1e63a9d0"
+# push_images_repo: "registry.lab.livefire.dev/kevincr/simple-app@sha256:4c8b96d4fffdfae29258d94a22ae4ad1fe36139d47288b8960d9958d1e63a9d0"
