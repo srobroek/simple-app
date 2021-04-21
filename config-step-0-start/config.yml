@@ -31,7 +31,7 @@ spec:
       containers:
       - name: simple-app
         image: <replace_this_with_the_image_in_your_Harbor_project>
-        # image: harbor.dev.livefire.lab/kevincr/simple-app@sha256:4c8b96d4fffdfae29258d94a22ae4ad1fe36139d47288b8960d9958d1e63a9d0
+        # image: registry.lab.livefire.dev/kevincr/simple-app@sha256:4c8b96d4fffdfae29258d94a22ae4ad1fe36139d47288b8960d9958d1e63a9d0
         env:
         - name: HELLO_MSG
           value: #@ data.values.hello_msg
